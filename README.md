@@ -1,4 +1,4 @@
-# Plex to Letterboxd
+# Plex2Letterboxd
 
 Exports watched movies from Plex to the [Letterboxd Import Format][import].
 
@@ -11,8 +11,8 @@ Movies are exported to a CSV file containing:
 ## Installation
 
 ```
-$ git clone https://github.com/mtimkovich/plex_to_letterboxd.git
-$ cd plex_to_letterbox
+$ git clone https://github.com/mtimkovich/plex2letterboxd.git
+$ cd plex2letterbox
 $ pip install .
 ```
 
@@ -21,7 +21,7 @@ $ pip install .
 Rename `config.ini.example` to `config.ini` and fill it with your Plex credentials.
 
 ```
-$ python -m plex_to_letterboxd -i config.ini
+$ python -m plex2letterboxd -i config.ini
 ```
 
 ```

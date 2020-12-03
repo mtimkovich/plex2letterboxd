@@ -4,8 +4,8 @@ with open('README.md') as f:
     README = f.read()
 
 setup(
-    name='plex_to_letterboxd',
-    url='https://github.com/mtimkovich/plex_to_letterboxd',
+    name='plex2letterboxd',
+    url='https://github.com/mtimkovich/plex2letterboxd',
     version='1.0',
     author='Max Timkovich',
     author_email='max@timkovi.ch',

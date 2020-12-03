@@ -32,6 +32,8 @@ optional arguments:
                         file to output to
 ```
 
+The generated CSV file can be uploaded to Letterboxd at https://letterboxd.com/import/.
+
 ## Author
 
 [Max Timkovich][profile]

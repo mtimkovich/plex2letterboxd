@@ -8,8 +8,8 @@ from plexapi.myplex import MyPlexAccount
 
 def parse_args():
     parser = argparse.ArgumentParser(
-            description='Export watched Plex movies to the Letterboxd import'
-                        'format.')
+        description='Export watched Plex movies to the Letterboxd import'
+                    'format.')
     parser.add_argument('-i', '--ini', default='config.ini',
                         help='config file')
     parser.add_argument('-o', '--output', default='letterboxd.csv',

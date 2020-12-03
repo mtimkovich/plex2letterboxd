@@ -13,6 +13,7 @@ setup(
     description='Export watched movies on Plex to the Letterboxd import format.',
     long_description=README,
     install_requires=['plexapi'],
+    python_requires='>=3',
     entry_points={'console_scripts': [
         'plex_to_letterboxd=plex_to_letterboxd:main'
     ]},

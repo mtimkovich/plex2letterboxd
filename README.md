@@ -3,7 +3,7 @@
 Exports watched movies from Plex to the [Letterboxd Import Format][import].
 
 Movies are exported to a CSV file containing:
-* Movie's Title
+* Movie Title
 * Release Year
 * User Rating
 * Last Watched Date

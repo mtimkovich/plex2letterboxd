@@ -1,0 +1,5 @@
+config.ini
+*.swp
+env
+*.csv
+__pycache__

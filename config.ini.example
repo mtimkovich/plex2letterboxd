@@ -1,0 +1,7 @@
+[auth]
+# Rename this file to 'config.ini' before running the script.
+# Plex username and password.
+username =
+password =
+# The name of your Plex server.
+server =

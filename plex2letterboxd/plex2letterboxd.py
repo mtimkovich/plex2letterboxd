@@ -27,13 +27,14 @@ def parse_config(ini):
         sys.exit(1)
     return auth
 
-def write_csv(movies, output):
+def write_csv(plex, output):
     """Generate Letterboxd import CSV."""
     with open(output, 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerow(['Title', 'Year', 'Rating10', 'WatchedDate'])
 
         count = 0
+        movies = plex.library.section('Movies')
         for movie in movies.search(sort='lastViewedAt', unwatched=False):
             date = movie.lastViewedAt.strftime('%Y-%m-%d')
             rating = movie.userRating
@@ -49,6 +50,5 @@ def main():
 
     account = MyPlexAccount(auth['username'], auth['password'])
     plex = account.resource(auth['server']).connect()
-    movies = plex.library.section('Movies')
 
-    write_csv(movies, args.output)
+    write_csv(plex, args.output)

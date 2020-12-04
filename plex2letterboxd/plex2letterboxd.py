@@ -15,7 +15,7 @@ def parse_args():
                         help='config file')
     parser.add_argument('-o', '--output', default='letterboxd.csv',
                         help='file to output to')
-    parser.add_argument('-s', '--sections', default=['Movies'], nargs='*',
+    parser.add_argument('-s', '--sections', default=['Movies'], nargs='+',
                         help='sections to grab from')
     return parser.parse_args()
 

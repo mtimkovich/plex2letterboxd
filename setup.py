@@ -6,7 +6,7 @@ with open('README.md') as f:
 setup(
     name='plex2letterboxd',
     url='https://github.com/mtimkovich/plex2letterboxd',
-    version='1.0',
+    version='1.1',
     author='Max Timkovich',
     author_email='max@timkovi.ch',
     license='MIT',

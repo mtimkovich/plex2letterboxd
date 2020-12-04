@@ -27,9 +27,11 @@ $ python -m plex2letterboxd -i config.ini
 ```
 optional arguments:
   -h, --help            show this help message and exit
-  -i INI, --ini INI     config file
+  -i INI, --ini INI     config file (default: config.ini)
   -o OUTPUT, --output OUTPUT
-                        file to output to
+                        file to output to (default: letterboxd.csv)
+  -s [SECTIONS [SECTIONS ...]], --sections [SECTIONS [SECTIONS ...]]
+                        sections to grab from (default: ['Movies'])
 ```
 
 The generated CSV file can be uploaded to Letterboxd at https://letterboxd.com/import/.

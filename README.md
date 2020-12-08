@@ -10,7 +10,7 @@ Movies are exported to a CSV file containing:
 
 ## Installation
 
-```
+```console
 $ git clone https://github.com/mtimkovich/plex2letterboxd.git
 $ cd plex2letterbox
 $ pip install .
@@ -20,7 +20,7 @@ $ pip install .
 
 Rename `config.ini.example` to `config.ini` and fill it with your Plex credentials.
 
-```
+```console
 $ python -m plex2letterboxd -i config.ini
 ```
 

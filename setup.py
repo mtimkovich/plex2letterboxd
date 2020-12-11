@@ -10,7 +10,7 @@ setup(
     author='Max Timkovich',
     author_email='max@timkovi.ch',
     license='MIT',
-    description='Export watched movies on Plex to the Letterboxd import format.',
+    description='Export watched Plex movies to the Letterboxd import format.',
     long_description=README,
     install_requires=['plexapi'],
     python_requires='>=3',

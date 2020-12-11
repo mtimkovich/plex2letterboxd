@@ -6,6 +6,7 @@ import sys
 
 from plexapi.myplex import MyPlexAccount
 
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description='Export watched Plex movies to the Letterboxd import '
@@ -19,6 +20,7 @@ def parse_args():
                         help='sections to grab from')
     return parser.parse_args()
 
+
 def parse_config(ini):
     """Read and validate config file."""
     config = configparser.ConfigParser()
@@ -29,6 +31,7 @@ def parse_config(ini):
         print(f'Missing the following config values: {missing}')
         sys.exit(1)
     return auth
+
 
 def write_csv(sections, output):
     """Generate Letterboxd import CSV."""
@@ -46,6 +49,7 @@ def write_csv(sections, output):
                 writer.writerow([movie.title, movie.year, rating, date])
                 count += 1
     print(f'Exported {count} movies to {output}.')
+
 
 def main():
     args = parse_args()

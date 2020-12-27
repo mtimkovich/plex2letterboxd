@@ -1,7 +1,6 @@
 [auth]
 # Rename this file to 'config.ini' before running the script.
-# Plex username and password.
-username =
-password =
-# The name of your Plex server.
-server =
+# Plex server URL e.g. localhost:32400
+baseurl =
+# https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
+token =

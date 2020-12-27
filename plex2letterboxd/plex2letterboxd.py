@@ -4,7 +4,7 @@ import configparser
 import csv
 import sys
 
-from plexapi.myplex import MyPlexAccount
+from plexapi.server import PlexServer
 
 
 def parse_args():
@@ -26,7 +26,7 @@ def parse_config(ini):
     config = configparser.ConfigParser()
     config.read(ini)
     auth = config['auth']
-    missing = {'username', 'password', 'server'} - set(auth.keys())
+    missing = {'baseurl', 'token'} - set(auth.keys())
     if missing:
         print(f'Missing the following config values: {missing}')
         sys.exit(1)
@@ -55,8 +55,7 @@ def main():
     args = parse_args()
     auth = parse_config(args.ini)
 
-    account = MyPlexAccount(auth['username'], auth['password'])
-    plex = account.resource(auth['server']).connect()
+    plex = PlexServer(auth['baseurl'], auth['token'])
 
     sections = [plex.library.section(s) for s in args.sections]
     write_csv(sections, args.output)

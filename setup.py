@@ -12,7 +12,7 @@ setup(
     license='MIT',
     description='Export watched Plex movies to the Letterboxd import format.',
     long_description=README,
-    install_requires=['plexapi==4.2.0'],
+    install_requires=['plexapi==4.5.2'],
     python_requires='>=3',
     entry_points={'console_scripts': [
         'plex_to_letterboxd=plex_to_letterboxd:main'

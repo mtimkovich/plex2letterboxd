@@ -42,7 +42,9 @@ def write_csv(sections, output):
         count = 0
         for section in sections:
             for movie in section.search(sort='lastViewedAt', unwatched=False):
-                date = movie.lastViewedAt.strftime('%Y-%m-%d')
+                date = None
+                if movie.lastViewedAt is not None:
+                    date = movie.lastViewedAt.strftime('%Y-%m-%d')
                 rating = movie.userRating
                 if rating is not None:
                     rating = f'{movie.userRating:.0f}'

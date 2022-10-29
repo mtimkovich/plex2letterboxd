@@ -18,6 +18,8 @@ def parse_args():
                         help='file to output to')
     parser.add_argument('-s', '--sections', default=['Movies'], nargs='+',
                         help='sections to grab from')
+    parser.add_argument('-m', '--managed-user',
+                        help='name of managed user to export')
     return parser.parse_args()
 
 
@@ -58,6 +60,14 @@ def main():
     auth = parse_config(args.ini)
 
     plex = PlexServer(auth['baseurl'], auth['token'])
+    if args.managed_user:
+        myplex = plex.myPlexAccount()
+        user = myplex.user(args.managed_user)
+        # Get the token for your machine.
+        token = user.get_token(plex.machineIdentifier)
+        # Login to your server using your friends credentials.
+        plex = PlexServer(auth['baseurl'], token)
+
 
     sections = [plex.library.section(s) for s in args.sections]
     write_csv(sections, args.output)

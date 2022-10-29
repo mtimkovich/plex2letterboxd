@@ -68,6 +68,5 @@ def main():
         # Login to your server using your friends credentials.
         plex = PlexServer(auth['baseurl'], token)
 
-
     sections = [plex.library.section(s) for s in args.sections]
     write_csv(sections, args.output)

@@ -20,6 +20,8 @@ def parse_args():
                         help='sections to grab from')
     parser.add_argument('-m', '--managed-user',
                         help='name of managed user to export')
+    parser.add_argument('-w', '--watched-after',
+                        help='only return movies watched after the given time [format: YYYY-MM-DD or 30d]')
     return parser.parse_args()
 
 
@@ -35,7 +37,7 @@ def parse_config(ini):
     return auth
 
 
-def write_csv(sections, output):
+def write_csv(sections, output, args):
     """Generate Letterboxd import CSV."""
     with open(output, 'w', newline='') as f:
         writer = csv.writer(f)
@@ -43,7 +45,10 @@ def write_csv(sections, output):
 
         count = 0
         for section in sections:
-            for movie in section.search(sort='lastViewedAt', unwatched=False):
+            filters = { 'unwatched': False }
+            if args.watched_after:
+                filters['lastViewedAt>>'] = args.watched_after
+            for movie in section.search(sort='lastViewedAt', filters=filters):
                 date = None
                 if movie.lastViewedAt is not None:
                     date = movie.lastViewedAt.strftime('%Y-%m-%d')
@@ -69,4 +74,4 @@ def main():
         plex = PlexServer(auth['baseurl'], token)
 
     sections = [plex.library.section(s) for s in args.sections]
-    write_csv(sections, args.output)
+    write_csv(sections, args.output, args)

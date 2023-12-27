@@ -21,7 +21,7 @@ $ pip install .
 Rename `config.ini.example` to `config.ini` and fill it with your Plex credentials.
 
 ```console
-$ python -m plex2letterboxd -i config.ini
+$ python -m plex2letterboxd
 ```
 
 ```
@@ -30,8 +30,13 @@ optional arguments:
   -i INI, --ini INI     config file (default: config.ini)
   -o OUTPUT, --output OUTPUT
                         file to output to (default: letterboxd.csv)
-  -s [SECTIONS [SECTIONS ...]], --sections [SECTIONS [SECTIONS ...]]
+  -s SECTIONS [SECTIONS ...], --sections SECTIONS [SECTIONS ...]
                         sections to grab from (default: ['Movies'])
+  -m MANAGED_USER, --managed-user MANAGED_USER
+                        name of managed user to export (default: None)
+  -w WATCHED_AFTER, --watched-after WATCHED_AFTER
+                        only return movies watched after the given time [format:
+                        YYYY-MM-DD or 30d] (default: None)
 ```
 
 The generated CSV file can be uploaded to Letterboxd at https://letterboxd.com/import/.

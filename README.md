@@ -41,6 +41,15 @@ optional arguments:
 
 The generated CSV file can be uploaded to Letterboxd at https://letterboxd.com/import/.
 
+### Docker
+
+Build the docker image and pass a `letterboxd.csv` file into the docker run command to store the generated csv.
+
+```console
+docker build -t plex2letterboxd .
+docker run -v $(pwd)/config.ini:/app/config.ini -v $(pwd)/letterboxd.csv:/app/letterboxd.csv plex2letterboxd
+```
+
 ## Author
 
 [Max Timkovich][profile]

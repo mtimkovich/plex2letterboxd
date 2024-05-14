@@ -16,6 +16,15 @@ $ cd plex2letterbox
 $ pip install .
 ```
 
+### Docker
+
+Build the Docker image and pass a `letterboxd.csv` file into the Docker run command to store the generated CSV.
+
+```console
+$ docker build -t plex2letterboxd .
+$ docker run -v $(pwd)/config.ini:/app/config.ini -v $(pwd)/letterboxd.csv:/app/letterboxd.csv plex2letterboxd
+```
+
 ## Usage
 
 Rename `config.ini.example` to `config.ini` and fill it with your Plex credentials.
@@ -40,15 +49,6 @@ optional arguments:
 ```
 
 The generated CSV file can be uploaded to Letterboxd at https://letterboxd.com/import/.
-
-### Docker
-
-Build the docker image and pass a `letterboxd.csv` file into the docker run command to store the generated csv.
-
-```console
-docker build -t plex2letterboxd .
-docker run -v $(pwd)/config.ini:/app/config.ini -v $(pwd)/letterboxd.csv:/app/letterboxd.csv plex2letterboxd
-```
 
 ## Author
 

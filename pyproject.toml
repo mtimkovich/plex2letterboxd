@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plex2letterboxd"
+version = "1.4"
+description = "Export watched Plex movies to the Letterboxd import format."
+authors = [
+  {name = "Max Timkovich", email = "max@timkovi.ch"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+
+dependencies = [
+  "plexapi>=4.15.7"
+]
+requires-python = ">=3"

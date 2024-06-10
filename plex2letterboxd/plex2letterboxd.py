@@ -2,6 +2,7 @@
 import argparse
 import configparser
 import csv
+import re
 import sys
 
 from plexapi.server import PlexServer
@@ -37,11 +38,18 @@ def parse_config(ini):
     return auth
 
 
+def getImdbId(movie):
+    for guid in (g.id for g in movie.guids):
+        if guid.startswith('imdb'):
+            return re.sub('^imdb://', '', guid)
+    return None
+
+
 def write_csv(sections, output, args):
     """Generate Letterboxd import CSV."""
     with open(output, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['Title', 'Year', 'Rating10', 'WatchedDate'])
+        writer.writerow(['Title', 'Year', 'imdbID', 'Rating10', 'WatchedDate'])
 
         count = 0
         for section in sections:
@@ -49,13 +57,14 @@ def write_csv(sections, output, args):
             if args.watched_after:
                 filters['lastViewedAt>>'] = args.watched_after
             for movie in section.search(sort='lastViewedAt', filters=filters):
+                imdbID = getImdbId(movie)
                 date = None
                 if movie.lastViewedAt is not None:
                     date = movie.lastViewedAt.strftime('%Y-%m-%d')
                 rating = movie.userRating
                 if rating is not None:
                     rating = f'{movie.userRating:.0f}'
-                writer.writerow([movie.title, movie.year, rating, date])
+                writer.writerow([movie.title, movie.year, imdbID, rating, date])
                 count += 1
     print(f'Exported {count} movies to {output}.')
 
@@ -70,7 +79,7 @@ def main():
         user = myplex.user(args.managed_user)
         # Get the token for your machine.
         token = user.get_token(plex.machineIdentifier)
-        # Login to your server using your friends credentials.
+        # Login to your server using your friend's credentials.
         plex = PlexServer(auth['baseurl'], token)
 
     sections = [plex.library.section(s) for s in args.sections]

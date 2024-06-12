@@ -14,6 +14,8 @@ Movies are exported to a CSV file containing:
 ```console
 $ git clone https://github.com/mtimkovich/plex2letterboxd.git
 $ cd plex2letterbox
+$ python -m venv env
+$ source env/bin/activate
 $ pip install .
 ```
 
